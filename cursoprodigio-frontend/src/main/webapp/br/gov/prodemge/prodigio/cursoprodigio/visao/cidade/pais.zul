@@ -1,50 +1,54 @@
-<window id="pais" apply="br.gov.prodemge.prodigio.cursoprodigio.controle.cidade.PaisCtr"
-	sizable="true" title="Pais" border="normal" closable="true">
-	<div id="barradebotoes" align="right"></div>
-	<selecaobox>
-		<sylistbox id="listaSelecao">
-			<auxhead class="cabecalhoPesquisa">
-				<auxheader>
-					<label value="Nome:" />
-					<textboxarg id="nomeArg"></textboxarg>
-				</auxheader>
-			</auxhead>
-			<listhead id="cabecalho">
-				<listheadersort label="Nome do país" value="nome" />
-			</listhead>
+<window id="pais" apply="br.gov.prodemge.prodigio.cursoprodigio.controle.cidade.PaisCtr" sizable="true">
+	
+		<div id="barradebotoes"/>
+	
+		<selecaobox>
 
-			<listitem height="25px">
-				<listcellbind label="nome" />
-			</listitem>
-		</sylistbox>
-	</selecaobox>
+			<sylistbox id="listaSelecao" >
+				<auxhead class="cabecalhoPesquisa" >
+					<auxheader>
+						<label value="Nome:" />
+						<textboxarg id="nomeArg"></textboxarg>
+					</auxheader>
+				</auxhead>
+				
+				<!-- listhead utilizado para fazer o carregamento das propriedades necessárias para o preenchimento do resultado -->
+				<listhead id="cabecalho">
+					<listheadersort  label="Nome" value="nome" />
+					<listheadersort  label="Lista de Estados" value="estados.nome" />
+				</listhead>
+				
+				
+				<!-- listitem utilizado para exibição dos campos carregados no listhead  -->
+				<listitem height="25px">
+					<listcellbind label="nome" />
+					<listcellbind label="listaEstados" />
+				</listitem>
+				
+			</sylistbox>
 
-	<manutencaobox>
-		<tablelayout>
-			<tablechildren>
+		</selecaobox>
+		
+		<manutencaobox >
+			<tablelayout >
+				<tablechildren>
 				<vbox>
-					<label value="Nome" />
-					<textboxbind
-						nomeDoObjeto="classecontrole.objetoAtual.nome" width="300px" />
-				</vbox>
-				<detbox width="100%" id="estadosDet"
-					nomeDoObjeto="classecontrole.objetoAtual.estados"
-					label="Estados">
+					<label value="Nome do País:" />
+					<textboxbind id="nome" maxlength="200"/>
+					<!-- textboxbind nomeDoObjeto="classecontrole.objetoAtual.nome" width="300px" / -->
+					
+					<detbox width="100%" id="estadosDet" nomeDoObjeto="classecontrole.objetoAtual.estados" label="Estados">
 					<listboxdet id="estados" rows="2" pageSize="10">
 						<listitem>
 							<listcell>
-								<textboxbind nomeDoObjeto="estados.nome"
-									width="60%" />
+								<textboxbind nomeDoObjeto="estados.nome" width="60%" />
 							</listcell>
 							<listcell>
-								<detbox width="100%" id="cidadesDet"
-									nomeDoObjeto="estados.cidades" label="Cidades">
-									<listboxdet id="cidades" rows="2"
-										pageSize="10">
+								<detbox width="100%" id="cidadesDet" nomeDoObjeto="estados.cidades" label="Cidades">
+									<listboxdet id="cidades" rows="2" pageSize="10">
 										<listitem>
 											<listcell>
-												<textboxbind
-													nomeDoObjeto="cidades.nome" width="60%" />
+												<textboxbind nomeDoObjeto="cidades.nome" width="60%" />
 											</listcell>
 										</listitem>
 									</listboxdet>
@@ -53,8 +57,10 @@
 						</listitem>
 					</listboxdet>
 				</detbox>
-			</tablechildren>
-		</tablelayout>
-	</manutencaobox>
-
+					
+				</vbox>
+				</tablechildren>
+			</tablelayout>
+		</manutencaobox>
+		
 </window>

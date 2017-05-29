@@ -1,37 +1,48 @@
-<window id="curso" 
-apply="br.gov.prodemge.prodigio.cursoprodigio.controle.curso.CursoCtr" sizable="true" title="Curso" border="normal" closable="true">
-	<div id="barradebotoes" align="right"> </div>
-	<selecaobox>
-		<sylistbox id="listaSelecao">
-			<auxhead class="cabecalhoPesquisa">
-				<auxheader>
+<window id="curso" apply="br.gov.prodemge.prodigio.cursoprodigio.controle.curso.CursoCtr" sizable="true" title="Curso" border="normal" closable="true">
+	
+		<div id="barradebotoes"/>
+	
+		<selecaobox>
+
+			<sylistbox id="listaSelecao" >
+				<auxhead class="cabecalhoPesquisa" >
+					<auxheader>
+						<label value="Nome:" />
+						<textboxarg id="nomeArg"></textboxarg>
+					</auxheader>
+				</auxhead>
+				
+				<!-- listhead utilizado para fazer o carregamento das propriedades necessárias para o preenchimento do resultado -->
+				<listhead id="cabecalho">
+					<listheadersort  label="Nome" value="nome" />
+					<listheadersort  label="Ementa" value="ementa" />
+				</listhead>
+				
+				
+				<!-- listitem utilizado para exibição dos campos carregados no listhead  -->
+				<listitem height="25px">
+					<listcellbind label="nome" />
+					<!--  listcellbind label="ementa" / -->
+					<listcell><html content="@{objeto.ementa}"></html></listcell>
+				</listitem>
+				
+			</sylistbox>
+
+		</selecaobox>
+		
+		<manutencaobox >
+			<tablelayout >
+				<tablechildren>
+				  <vbox>
 					<label value="Nome:" />
-					<textboxarg id="nomeArg"></textboxarg>
-				</auxheader>
-			</auxhead>
-			<listhead id="cabecalho">
-				<listheadersort label="Nome do curso" value="nome" />
-			</listhead>
-			
-			<listitem height="25px">
-				<listcellbind label="nome" />
-			</listitem>
-		</sylistbox>
-	</selecaobox>
-
-	<manutencaobox>
-		<tablelayout>
-			<tablechildren>
-				<vbox>
-					<label value="Nome" />
-					<textboxbind nomeDoObjeto="classecontrole.objetoAtual.nome" width="300px"/>
-					<label value="Ementa" />
-					<ckeditorbind nomeDoObjeto="@{classecontrole.objetoAtual.ementa}"/>
-					<label value="Área do curso" />
-					<bandboxbind nomeDoObjeto="classecontrole.objetoAtual.areaCurso" width="300px"/>
- 				</vbox>
-			</tablechildren>
-		</tablelayout>
-	</manutencaobox>
-
+					<textboxbind id="nome"/>
+					<label value="Ementa:" />
+					<ckeditorbind value="@{classecontrole.objetoAtual.ementa}" toolbar="Simple"/>
+					<label value="Área do curso:" />
+					<bandboxbind nomeDoObjeto="classecontrole.objetoAtual.areaCurso" />
+				  </vbox>
+				</tablechildren>
+			</tablelayout>
+		</manutencaobox>
+		
 </window>

@@ -17,109 +17,139 @@ import br.gov.prodigio.entidades.ProVO.SITUACAO_DO_REGISTRO;
 import br.gov.prodigio.entidades.StatusDoRegistro;
 
 @RunWith(Arquillian.class)
-public class CompromissoIntegrationTest extends
-		CursoProdigioBaseIntegrationTest {
+public class CompromissoIntegrationTest extends	CursoProdigioBaseIntegrationTest {
 
 	@Test
-	public void gravarCompromisso() throws Exception {
+	public void gravaCompromisso() throws Exception {
 		// Preenchendo o objeto compromisso
-		Date agora = new Date();
-		Calendar calendar = Calendar.getInstance();
 		CompromissoVO compromisso = new CompromissoVO();
+		Date agora = new Date();
 		compromisso.setTsMovimentacao(agora);
 		compromisso.setIpMovimentacao("127.0.0.1");
 		compromisso.setStatusDoRegistro(StatusDoRegistro.ATIVO);
 		compromisso.setTpOperacao(SITUACAO_DO_REGISTRO.EM_EDICAO);
 		compromisso.setDescricao("Compromisso " + agora);
 		compromisso.setCdLoginMovimentacao("2154567899");
+		Calendar calendar = Calendar.getInstance();
 		compromisso.setDataInicio(agora);
 		calendar.setTime(agora);
 		calendar.add(Calendar.HOUR, 1);
 		calendar.add(Calendar.MINUTE, 30);
 		compromisso.setDataFim(calendar.getTime());
+		// Enviando o objeto para a gravação.
 		Long id = (Long) facade.gravar(compromisso);
 		// Conferindo se foi gravado.
 		Assertions.assertThat(id).isNotNull();
 	}
-
+	
 	@Test
 	public void gravaCompromissoComDescricaoVazia() {
+
 		CompromissoVO compromisso = new CompromissoVO();
 		Date agora = new Date();
+
 		compromisso.setTsMovimentacao(agora);
 		compromisso.setIpMovimentacao("127.0.0.1");
 		compromisso.setStatusDoRegistro(StatusDoRegistro.ATIVO);
 		compromisso.setTpOperacao(SITUACAO_DO_REGISTRO.EM_EDICAO);
 		compromisso.setCdLoginMovimentacao("2154567899");
+		
 		compromisso.setDataInicio(agora);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(agora);
 		calendar.add(Calendar.HOUR, 1);
 		calendar.add(Calendar.MINUTE, 30);
 		compromisso.setDataFim(calendar.getTime());
-		try {
-			Long id = (Long) facade.gravar(compromisso);
-			fail();
-		} catch (ViolacaoDeRegraEx e) {
-			Assertions.assertThat(e).hasMessage(
-					"O Compromisso precisa de uma descrição.");
-		} catch (Exception e) {
-			fail();
-		}
+		compromisso.setDescricao(null);
+		
+		Exception e1 = capturaExcecaoAoGravar(compromisso);
+		Assertions.assertThat(e1).isExactlyInstanceOf(ViolacaoDeRegraEx.class).hasMessage("O Compromisso precisa de uma descrição.");
+
+//		try {
+//			Long id = (Long) facade.gravar(compromisso);
+//			fail();
+//		} catch (ViolacaoDeRegraEx e) {
+//			Assertions.assertThat(e).hasMessage(
+//					"O Compromisso precisa de uma descrição.");
+//		} catch (Exception e) {
+//			fail();
+//		}
 	}
 	
 	@Test
-	public void gravaCompromissoComDataInicioMaior() {
+	public void gravaCompromissoComDataInicioVazia() {
+
 		CompromissoVO compromisso = new CompromissoVO();
 		Date agora = new Date();
+
 		compromisso.setTsMovimentacao(agora);
 		compromisso.setIpMovimentacao("127.0.0.1");
 		compromisso.setStatusDoRegistro(StatusDoRegistro.ATIVO);
 		compromisso.setTpOperacao(SITUACAO_DO_REGISTRO.EM_EDICAO);
 		compromisso.setCdLoginMovimentacao("2154567899");
-		compromisso.setDescricao("Compromisso " + agora);
-		compromisso.setDataFim(agora);
+		
+		compromisso.setDataInicio(null);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(agora);
 		calendar.add(Calendar.HOUR, 1);
 		calendar.add(Calendar.MINUTE, 30);
-		compromisso.setDataInicio(calendar.getTime());
-		try {
-			Long id = (Long) facade.gravar(compromisso);
-			fail();
-		} catch (ViolacaoDeRegraEx e) {
-			Assertions.assertThat(e).hasMessage(
-					"Data inicio maior que data fim.");
-		} catch (Exception e) {
-			fail();
-		}
+		compromisso.setDataFim(calendar.getTime());
+		compromisso.setDescricao("desc");
+		
+		Exception e1 = capturaExcecaoAoGravar(compromisso);
+		Assertions.assertThat(e1).isExactlyInstanceOf(ViolacaoDeRegraEx.class).hasMessage("A data inicio do compromisso não pode ser vazia.");
+
 	}
 	
 	@Test
-	public void gravaCompromissoComDataFimMenor() {
+	public void gravaCompromissoComDataFimVazia() {
+
 		CompromissoVO compromisso = new CompromissoVO();
 		Date agora = new Date();
+
 		compromisso.setTsMovimentacao(agora);
 		compromisso.setIpMovimentacao("127.0.0.1");
 		compromisso.setStatusDoRegistro(StatusDoRegistro.ATIVO);
 		compromisso.setTpOperacao(SITUACAO_DO_REGISTRO.EM_EDICAO);
-		compromisso.setDescricao("Compromisso " + agora);
 		compromisso.setCdLoginMovimentacao("2154567899");
-		compromisso.setDataFim(agora);
+		
+		compromisso.setDataInicio(agora);
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(agora);
 		calendar.add(Calendar.HOUR, 1);
 		calendar.add(Calendar.MINUTE, 30);
-		compromisso.setDataInicio(calendar.getTime());
-		try {
-			Long id = (Long) facade.gravar(compromisso);
-			fail();
-		} catch (ViolacaoDeRegraEx e) {
-			Assertions.assertThat(e).hasMessage(
-					"Data fim menor que data Inicio.");
-		} catch (Exception e) {
-			fail();
-		}
+		compromisso.setDataFim(null);
+		compromisso.setDescricao("desc");
+		
+		Exception e1 = capturaExcecaoAoGravar(compromisso);
+		Assertions.assertThat(e1).isExactlyInstanceOf(ViolacaoDeRegraEx.class).hasMessage("A data fim do compromisso não pode ser vazia.");
+
 	}
+	
+	@Test
+	public void gravaCompromissoComDataInicioAposDataFim() {
+
+		CompromissoVO compromisso = new CompromissoVO();
+		Date agora = new Date();
+
+		compromisso.setTsMovimentacao(agora);
+		compromisso.setIpMovimentacao("127.0.0.1");
+		compromisso.setStatusDoRegistro(StatusDoRegistro.ATIVO);
+		compromisso.setTpOperacao(SITUACAO_DO_REGISTRO.EM_EDICAO);
+		compromisso.setCdLoginMovimentacao("2154567899");
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(agora);
+		calendar.add(Calendar.HOUR, 1);
+		calendar.add(Calendar.MINUTE, 30);
+		compromisso.setDataFim(agora);
+		compromisso.setDataInicio(calendar.getTime());
+		compromisso.setDescricao("desc");
+		
+		Exception e1 = capturaExcecaoAoGravar(compromisso);
+		Assertions.assertThat(e1).isExactlyInstanceOf(ViolacaoDeRegraEx.class).hasMessage("A data do compromisso deve ser antes da data fim.");
+
+	}
+
 	
 }

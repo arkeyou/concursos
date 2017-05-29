@@ -1,8 +1,7 @@
-<window id="funcionario"
-	apply="br.gov.prodemge.prodigio.cursoprodigio.controle.funcionario.FuncionarioCtr"
-	sizable="true">
+<window id="funcionario" apply="br.gov.prodemge.prodigio.cursoprodigio.controle.funcionario.FuncionarioCtr" sizable="true">
 	
-	<div width="100%" align="right">
+		<div id="barradebotoes2"/>
+		<div width="100%" align="right">
 		<a onClick='classecontrole.abrecasoDeUso("cidade/pais.zul", true, "", "100%")'>Caso de uso país</a>
 			<a onClick='classecontrole.abrecasoDeUso("curso/curso.zul", true, "highlighted", "60%")'>caso de uso curso</a>
 				<div>
@@ -16,258 +15,344 @@
 	</div>
 
 	<grid id="barradebotoes"></grid>
+	
+		<selecaobox>
 
-	<selecaobox>
-		<sylistbox id="listaSelecao">
-			<auxhead>
-				<auxheader colspan="8">
-					<grid zclass=".">
-						<rows zclass=".">
-							<group label="Pesquisa Funcionário"
-								spans="8" open="false" />
-							<row zclass=".">
+<popup id="popuptooltip" width="300px">
+	<div>jkashdka jshdka djkasd hka</div>
+</popup>
 
-								<cell>
-									<label value="Nome:" />
-									<textboxarg id="nomeArg"></textboxarg>
-								</cell>
-								<cell>
-									<label value="CPF:" />
-									<textboxarg id="cpfArg"></textboxarg>
-								</cell>
-								<cell>
-									<label
-										value="Data Alteração Início:" />
-									<dateboxbind
-										nomeDoObjeto="classecontrole.objetoAtualArg.tsMovimentacao">
-									</dateboxbind>
-								</cell>
-								<cell>
-									<label value="Data Alteração Fim:" />
-									<dateboxbind
-										nomeDoObjeto="classecontrole.objetoAtualArg2.tsMovimentacao">
-									</dateboxbind>
-								</cell>
-								<cell>
-									<label value="Cidade:" />
-									<bandboxbind
-										nomeDoObjeto="classecontrole.objetoAtualArg.cidade">
-									</bandboxbind>
-								</cell>
-								<cell></cell>
-								<cell></cell>
-							</row>
-
-
-						</rows>
-					</grid>
-				</auxheader>
-			</auxhead>
-
-
-			<listhead id="cabecalho">
-				<listheadersort label="Foto" value="imagem"/>
-				<listheadersort label="Nome" value="nome"/>
-				<listheadersort label="CPF" value="cpf" />
-				<listheadersort label="Matrícula" value="matricula" />
-				<listheadersort label="Data Alteração Início" value="tsMovimentacao" />
-				<listheadersort label="Cidade" value="cidade" />
-				<listheader label="Cursos" value="cursos.cursoVO.nome" />
-				<listheader label="" />
-			</listhead>
-
-			<listitem height="25px" tooltip="testeDescricao">
+<internalwindow id="cursoDetalhe" title="Cursos" visible="false" width="30%" position="center,center" closable="true">
+	<listbox model="@{classecontrole.funcionarioEmDetalhes.cursos}">
+		<template name="model">
+			<listitem>
 				<listcell>
-					<imagebind content="@{objeto.imagem}" width="50px" height="50px"></imagebind>
+					<label value="${each.cursoVO.nome}"></label>
 				</listcell>
-				<listcellbind label="nome" />
-				<listcellbind label="cpf" />
-				<listcellbind label="matricula" />
-				<listcellbind label="tsMovimentacao" />
-				<listcellbind label="cidade" />
-				<listcellbind label="cursosStr" />
 				<listcell>
-					<button label="Cursos" onClick="classecontrole.verCursos(self.parent)"></button>
+					<label value="${each.cursoVO.tsMovimentacao}"></label>
 				</listcell>
 			</listitem>
+		</template>
+	</listbox>
+</internalwindow>
 
-		</sylistbox>
-		
-		<internalwindow id="cursoDetalhe" title="Cursos" visible="false" width="30%" position="center,center" closable="true">
-		<listbox model="@{classecontrole.funcionarioEmDetalhes.cursos}">
-			<template name="model">
-				<listitem>
+<popup id="cursoDetalhePopup" width="30%" zclass=".">
+	<panel title="Cursos">
+		<panelchildren>
+			<listbox model="@{classecontrole.funcionarioEmDetalhes.cursos}">
+				<template name="model">
+					<listitem>
+						<listcell>
+							<label value="${each.cursoVO.nome}"></label>
+						</listcell>
+						<listcell>
+							<label value="${each.cursoVO.tsMovimentacao}"></label>
+						</listcell>
+					</listitem>
+				</template>
+			</listbox>
+		</panelchildren>
+	</panel>
+</popup>
+
+			<sylistbox id="listaSelecao" >
+				<auxhead class="cabecalhoPesquisa" >
+					<auxheader>
+						<label value="Nome:" />
+						<textboxarg id="nomeArg"></textboxarg>
+					</auxheader>
+					<auxheader>
+						<label value="CPF:" />
+						<textboxarg id="cpfArg"></textboxarg>
+					</auxheader>
+					<auxheader>
+						<label value="Matrícula:" />
+						<textboxarg id="matriculaArg"></textboxarg>
+					</auxheader>
+				</auxhead>
+				
+				<!-- listhead utilizado para fazer o carregamento das propriedades necessárias para o preenchimento do resultado -->
+				<listhead id="cabecalho">
+					<listheadersort label="Foto" value="imagem"/>
+					<listheadersort  label="Nome" value="nome" />
+					<listheadersort  label="CPF" value="cpf" />
+					<listheadersort  label="Matrícula" value="matricula"/>
+					<listheader  label="Cursos" value="cursos.cursoVO.nome"/>
+					<listheader  label="Ações" value="cursos.cursoVO.tsMovimentacao"/>
+				</listhead>
+				
+				<!-- listitem utilizado para exibição dos campos carregados no listhead  -->
+				<listitem height="25px" tooltip="popuptooltip">
 					<listcell>
-						<label value="${each.cursoVO.nome}"></label>
+						<imagebind content="@{objeto.imagem}" width="50px" height="50px"></imagebind>
 					</listcell>
+					<listcellbind label="nome" />
+					<listcellbind label="cpf" />
+					<listcellbind label="matricula" />
+					<listcellbind label="cursosStr" />
 					<listcell>
-						<label value="${each.cursoVO.tsMovimentacao}"></label>
+						<button label="Cursos" onClick="classecontrole.verCursos(self.parent)"></button>					
 					</listcell>
 				</listitem>
-			</template>
-		</listbox>
-	</internalwindow>
+				
+			</sylistbox>
 
-	<popup id="cursoDetalhePopup" width="30%" zclass=".">
-		<panel title="Cursos">
-			<panelchildren>
-				<listbox model="@{classecontrole.funcionarioEmDetalhes.cursos}">
-					<template name="model">
-						<listitem>
-							<listcell>
-								<label value="${each.cursoVO.nome}"></label>
-							</listcell>
-							<listcell>
-								<label value="${each.cursoVO.tsMovimentacao}"></label>
-							</listcell>
-						</listitem>
-					</template>
-				</listbox>
-			</panelchildren>
-		</panel>
-	</popup>
+		</selecaobox>
 		
-		<popup id="testeDescricao" width="300px">
-		<vbox>
-		Teste de descrição.
-
-		</vbox>
-		</popup>
-
-	</selecaobox>
-
-	<manutencaobox>
-		<tabbox>
-			<tabs>
-				<tab label="Dados básicos" width="300px"></tab>
-				<tab label="Cursos" width="300px"></tab>
-				<tab label="Endereços" width="300px"></tab>
-				<tab label="Foto" width="300px"></tab>
-				<tab label="Anexo" width="300px"></tab>
-			</tabs>
-			<tabpanels>
-
-				<tabpanel>
-					<label value="Nome:" />
-					<textboxbind id="nome" />
-					<label value="CPF:" />
-					<cpfboxbind id="cpf" />
-					<label value="Matrícula:"></label>
-					<textboxbind id="matricula" />
-					<label value="Salário:"></label>
-					<moneyboxbind id="salario" />
-					<label value="País:" />
-					<bandboxbind
-						nomeDoObjeto="classecontrole.objetoAtual.paisVO" width="300px" />
-					<label value="Estado:" />
-					<bandboxbind
-						nomeDoObjeto="classecontrole.objetoAtual.estadoVO" width="300px" />
-					<label value="Cidade:" />
-					<bandboxbind
-						nomeDoObjeto="classecontrole.objetoAtual.cidade" width="300px" />
-					<label value="Tem filhos?"></label>
-					<checkboxbind
-						nomeDoObjeto="classecontrole.objetoAtual.temFilhos" />
-					<label value="Estado Cívil:"></label>
-					<radiogroupbind
-						nomeDoObjeto="classecontrole.objetoAtual.estadoCivil"
-						width="300px" />
-					<combobox model="@{classecontrole.estadoCivil}"
-						selectedItem="@{classecontrole.objetoAtual.estadoCivil}">
-					</combobox>
-				</tabpanel>
-
-				<tabpanel>
-					<detbox width="100%" id="cursosDet"
-						nomeDoObjeto="classecontrole.objetoAtual.cursos" label="Cursos">
-						<listboxdet id="cursos" rows="2"
-							pageSize="10">
-							<listitem>
-								<listcell>
-									<bandboxbind
-										nomeDoObjeto="cursos.cursoVO" width="60%" />
-								</listcell>
-							</listitem>
-						</listboxdet>
-					</detbox>
-				</tabpanel>
-				
-				<tabpanel id="endereco">
-					<label value="cep"></label>
-					<textbox value="@{classecontrole.objetoAtual.funcionarioEndereco.logradouro.cep}" onBlur="classecontrole.recuperaLogradouroPorCep(self)"></textbox>
-					<separator></separator>
-					
-					<label value="Logradouro"></label>
-					<bandboxbind nomeDoObjeto="classecontrole.objetoAtual.funcionarioEndereco.logradouro" atualizarComponentes="endereco"></bandboxbind>
-					<separator></separator>
-					
-					<!--label value="numero"></label>
-					<textbox value="@{classecontrole.objetoAtual.funcionarioEndereco.logradouro.numero}"></textbox>
-					<separator></separator-->
-					
-					<label value="Bairro:"></label>
-					<label value="@{classecontrole.objetoAtual.funcionarioEndereco.logradouro.bairro}"></label>
-					<separator></separator>
-					<label value="Cidade:"></label>
-					<label value="@{classecontrole.objetoAtual.funcionarioEndereco.logradouro.bairro.cidade}"></label>
-					<separator></separator>
-					<label value="Estado:"></label>
-					<label value="@{classecontrole.objetoAtual.funcionarioEndereco.logradouro.bairro.cidade.estado}"></label>
-				</tabpanel>
-				
-				<tabpanel>
-					<hbox align="center">
-						<imagebind id="imagem" value="@{classecontrole.objetoAtual.imagem}"></imagebind>
-					</hbox>
-					<hbox pack="center" width="100%">
-					<button label="Anexar" id="anexar" onClick='classecontrole.anexar("imagem")'/>
-					</hbox>
-				</tabpanel>
-				
-				<tabpanel>
-					<detbox width="100%" id="anexosDet" nomeDoObjeto="classecontrole.objetoAtual.anexosMemorando" label="Memorandos" nomeDoAtributoMestre="funcionario">
-	<listboxdet id="anexosMemorando" rows="5" pageSize="5">
-		<listhead>
-			<listheader label="Nome" width="50%" />
-			<listheader label="Formato" width="10%" />
-			<listheader label="Tipo" width="20%" />
-			<listheader label="Data" width="10%" />
-			<listheader label="Ver" />
-			<listheader label="Anexar" />
-			<listheader label="Baixar" />
-		</listhead>
-		<listitem value="@{anexosMemorando}">
-			<listcell>
-				<label value="@{anexosMemorando.nome}" width="200px" />
-			</listcell>
-			<listcell>
-				<label value="@{anexosMemorando.formato}" width="200px" />
-			</listcell>
-			<listcell>
-				<label value="@{anexosMemorando.anexoTipo}" width="200px" />
-			</listcell>
-			<listcell>
-				<label value="@{anexosMemorando.tsMovimentacao}" width="200px" />
-			</listcell>
-			<listcell>
-				<button zclass="z-button" label="." onClick="self.getNextSibling().doModal()" width="50px" height="30px" visible="@{anexosMemorando.isImagem}" />
-				<internalwindow title="Imagens" visible="false" width="30%" position="top,center" closable="true">
-					<imagebind content="@{anexosMemorando.bytes}"></imagebind>
-				</internalwindow>
-			</listcell>
-			<listcell>
-				<buttonuploadbind nomeDoObjeto="anexosMemorando.bytes" width="50px" height="30px" />
-			</listcell>
-			<listcell>
-				<buttondownloadbind nomeDoObjeto="anexosMemorando.bytes" width="50px" height="30px" />
-			</listcell>
-		</listitem>
-	</listboxdet>
-</detbox>
-				</tabpanel>
-				
-			</tabpanels>
+		<manutencaobox>
+			<tabbox>
+				<tabs>
+					<tab label="Dados Básicos" width="200px" />
+					<tab label="Dependentes" width="200px" />
+					<tab label="Endereço" width="200px" />
+					<tab label="Foto" width="200px" />
+					<tab label="Breve Descrição" width="200px" />
+					<tab label="Anexos" width="200px" />
+				</tabs>
+				<tabpanels>
+					<tabpanel>
+						<tablelayout >
+							<tablechildren>
+							  <vbox>
+								<label value="Nome:" />
+								<textboxbind id="nome"/>
+								<label value="CPF:" />
+								<cpfboxbind id="cpf" />
+								<label value="Matrícula:" />
+								<textboxbind id="matricula"/>
+								<label value="Tem filhos:" />
+								<checkboxbind id="temFilhos"/>
+								<label value="Estado Civil:" />
+								<radiogroupbind id="estadoCivil"/>
+								<combobox model="@{classecontrole.listaEstadoCivil}" selectedItem="@{classecontrole.objetoAtual.estadoCivil}" />
+								<label value="Salário:" />
+								<moneyboxbind id="salario" width="150px" />
+								<label value="País:" />
+								<bandboxbind id="pais" nomeDoObjeto="classecontrole.objetoAtual.paisVO" labelValorList="Países:nome;Id:id" identificador="pais"/>
+								<label value="Estado:" />
+								<bandboxbind id="estado" nomeDoObjeto="classecontrole.objetoAtual.estadoVO" dependeDoComponente="pais" identificador="estados"/>
+								<label value="Cidade:" />
+								<bandboxbind id="cidade" nomeDoObjeto="classecontrole.objetoAtual.cidade" dependeDoComponente="estados" identificador="cidades"/>
+								<box pack="center" >
+									<a onClick="popup_formacao.doModal()" label="Formação"/>
+									<internalwindow	id="popup_formacao" visible="false" position="center,center">
+										<detbox width="100%" id="cursosDet" nomeDoObjeto="classecontrole.objetoAtual.cursos" label="Cursos">
+											<listboxdet id="cursos"	rows="2" pageSize="10">
+												<listitem>
+													<listcell>
+														<bandboxbind nomeDoObjeto="cursos.cursoVO" width="20%" heightList="200px" />
+													</listcell>
+												</listitem>
+											</listboxdet>
+										</detbox>
+										<button label="Fechar" onClick="((InternalWindow)self.getParent()).setVisible(false)"></button>
+									</internalwindow>
+								</box>
+							  </vbox>
+							</tablechildren>
+						</tablelayout>
+					</tabpanel>
+					<tabpanel>
+						<div id="div_dependente">
+							<detbox width="100%" id="dependentesDet" nomeDoObjeto="classecontrole.objetoAtual.dependentes">
+								<listboxdet id="dependentes" rows="5"
+									pageSize="5">
+									<listhead>
+										<listheader width="75%"></listheader>
+										<listheader width="10%"></listheader>
+										<listheader align="center">
+											<button label="Novo dependente" onClick="classecontrole.novoDependente()" class="btn-success btn" />
+										</listheader>
+									</listhead>
+									<listitem value="@{dependentes}">
+										<listcell>
+											<label
+												value="@{dependentes.nome}">
+											</label>
+										</listcell>
+										<listcell
+											style="text-align:center">
+											<imagebind id="imagemDepe" content="@{dependentes.imagem}" width="50px" height="50px">
+											</imagebind>
+										</listcell>
+										<listcell>
+											<button label="Editar" onClick="classecontrole.editarDependente(self.parent.parent)"
+												sclass="btn-success btn">
+											</button>
+										</listcell>
+									</listitem>
+								</listboxdet>
+							</detbox>
+						</div>
+					</tabpanel>
+					<tabpanel id="endereco">
+						<vbox>
+							<label value="cep:"></label>
+							<textbox value="@{classecontrole.objetoAtual.funcionarioEndereco.logradouro.cep}" inplace="true" onBlur="classecontrole.recuperaLogradouroPorCep(self)" />
+							<separator></separator>
+							<label value="Logradouro:"></label>
+							<bandboxbind nomeDoObjeto="classecontrole.objetoAtual.funcionarioEndereco.logradouro" identificador="logradouro" labelValorList="Logradouro-300px:nome;Bairro:bairro;Cidade:bairro.cidade" width="600px" widthList="1000px" heightList="400px" atualizarComponentes="endereco" />
+							<separator></separator>
+							<label value="Bairro:"></label>
+							<label value="@{classecontrole.objetoAtual.funcionarioEndereco.logradouro.bairro}">
+							</label>
+							<separator></separator>
+							<label value="Cidade:"></label>
+							<label value="@{classecontrole.objetoAtual.funcionarioEndereco.logradouro.bairro.cidade}">
+							</label>
+							<separator></separator>
+							<label value="Estado:"></label>
+							<label value="@{classecontrole.objetoAtual.funcionarioEndereco.logradouro.bairro.cidade.estado}">
+							</label>
+						</vbox>
+					</tabpanel>
+					<tabpanel id="foto">
+						<vbox width="100%">
+						<hbox pack="center" width="100%">
+							<imagebind id="imagem" content="@{classecontrole.objetoAtual.imagem}" />
+						</hbox>
+						<hbox pack="center" width="100%">
+							<button label="Anexar" id="anexar" onClick='classecontrole.anexar("imagem")' />
+							<button label="Limpar" id="limparFoto" onClick='classecontrole.limparFoto()' />
+						</hbox>
+					</vbox>
+					</tabpanel>
+					<tabpanel>
+						<!-- Breve descrição -->
+						<ckeditorbind id="ed" value="@{classecontrole.objetoAtual.breveDescricao}" />
+						<button label="Visualizar" onClick="self.getNextSibling().doModal()" />
+						<internalwindow position="center,center" visible="false" closable="true" title="Breve Descrição">
+							<html id="h" content="@{ed.value}" />
+						</internalwindow>
+					</tabpanel>
+					<tabpanel>
+						<detbox width="100%" id="anexosDet" nomeDoObjeto="classecontrole.objetoAtual.anexos" label="Anexos">
+							<listboxdet id="anexos" rows="5" pageSize="5">
+								<listhead>
+									<listheader label="Nome" width="50%" />
+									<listheader label="Formato" width="10%" />
+									<listheader label="Tipo" width="20%" />
+									<listheader label="Data" width="10%" />
+									<listheader label="Ver" />
+									<listheader label="Anexar" />
+									<listheader label="Baixar" />
+								</listhead>
+								<listitem value="@{anexos}">
+									<listcell>
+										<label value="@{anexos.nome}" width="200px" />
+									</listcell>
+									<listcell>
+										<label value="@{anexos.formato}" width="200px" />
+									</listcell>
+									<listcell>
+										<label
+											value="@{anexos.anexoTipo}" width="200px" />
+									</listcell>
+									<listcell>
+										<label value="@{anexos.tsMovimentacao}" width="200px" />
+									</listcell>
+									<listcell>
+										<button zclass="z-button" label="." onClick="self.getNextSibling().doModal()" width="50px" height="30px" visible="@{anexos.isImagem}" />
+										<internalwindow title="Imagens" visible="false" width="30%" position="top,center" closable="true">
+											<imagebind content="@{anexos.bytes}">
+											</imagebind>
+										</internalwindow>
+									</listcell>
+									<listcell>
+										<buttonuploadbind nomeDoObjeto="anexos.bytes" width="50px" height="30px" />
+									</listcell>
+									<listcell>
+										<buttondownloadbind nomeDoObjeto="anexos.bytes" width="50px" height="30px" />
+									</listcell>
+								</listitem>
+							</listboxdet>
+						</detbox>
+						<detbox width="100%" id="anexosOficioDet" nomeDoObjeto="classecontrole.objetoAtual.anexosOficio" label="Anexos Ofícios">
+							<listboxdet id="anexosOficio" rows="5" pageSize="5">
+								<listhead>
+									<listheader label="Nome" width="50%" />
+									<listheader label="Formato" width="10%" />
+									<listheader label="Tipo" width="20%" />
+									<listheader label="Data" width="10%" />
+									<listheader label="Ver" />
+									<listheader label="Anexar" />
+									<listheader label="Baixar" />
+								</listhead>
+								<listitem value="@{anexosOficio}">
+									<listcell>
+										<label value="@{anexosOficio.nome}" width="200px" />
+									</listcell>
+									<listcell>
+										<label value="@{anexosOficio.formato}" width="200px" />
+									</listcell>
+									<listcell>
+										<label
+											value="@{anexosOficio.anexoTipo}" width="200px" />
+									</listcell>
+									<listcell>
+										<label value="@{anexosOficio.tsMovimentacao}" width="200px" />
+									</listcell>
+									<listcell>
+										<button zclass="z-button" label="." onClick="self.getNextSibling().doModal()" width="50px" height="30px" visible="@{anexosOficio.isImagem}" />
+										<internalwindow title="Imagens" visible="false" width="30%" position="top,center" closable="true">
+											<imagebind content="@{anexosOficio.bytes}">
+											</imagebind>
+										</internalwindow>
+									</listcell>
+									<listcell>
+										<buttonuploadbind nomeDoObjeto="anexosOficio.bytes" width="50px" height="30px" />
+									</listcell>
+									<listcell>
+										<buttondownloadbind nomeDoObjeto="anexosOficio.bytes" width="50px" height="30px" />
+									</listcell>
+								</listitem>
+							</listboxdet>
+						</detbox>
+						<detbox width="100%" id="anexosMemorandoDet" nomeDoObjeto="classecontrole.objetoAtual.anexosMemorando" label="Anexos Memorando">
+							<listboxdet id="anexosMemorando" rows="5" pageSize="5">
+								<listhead>
+									<listheader label="Nome" width="50%" />
+									<listheader label="Formato" width="10%" />
+									<listheader label="Tipo" width="20%" />
+									<listheader label="Data" width="10%" />
+									<listheader label="Ver" />
+									<listheader label="Anexar" />
+									<listheader label="Baixar" />
+								</listhead>
+								<listitem value="@{anexosMemorando}">
+									<listcell>
+										<label value="@{anexosMemorando.nome}" width="200px" />
+									</listcell>
+									<listcell>
+										<label value="@{anexosMemorando.formato}" width="200px" />
+									</listcell>
+									<listcell>
+										<label
+											value="@{anexosMemorando.anexoTipo}" width="200px" />
+									</listcell>
+									<listcell>
+										<label value="@{anexosMemorando.tsMovimentacao}" width="200px" />
+									</listcell>
+									<listcell>
+										<button zclass="z-button" label="." onClick="self.getNextSibling().doModal()" width="50px" height="30px" visible="@{anexosMemorando.isImagem}" />
+										<internalwindow title="Imagens" visible="false" width="30%" position="top,center" closable="true">
+											<imagebind content="@{anexosMemorando.bytes}">
+											</imagebind>
+										</internalwindow>
+									</listcell>
+									<listcell>
+										<buttonuploadbind nomeDoObjeto="anexosMemorando.bytes" width="50px" height="30px" />
+									</listcell>
+									<listcell>
+										<buttondownloadbind nomeDoObjeto="anexosMemorando.bytes" width="50px" height="30px" />
+									</listcell>
+								</listitem>
+							</listboxdet>
+						</detbox>
+					</tabpanel>
+				</tabpanels>
 			</tabbox>
-	</manutencaobox>
-
+		</manutencaobox>
+		
 </window>

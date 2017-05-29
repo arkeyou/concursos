@@ -1,37 +1,56 @@
-<window id="logradouro" apply="br.gov.prodemge.prodigio.cursoprodigio.controle.cidade.LogradouroCtr"
-	sizable="true" title="Logradouro" border="normal" closable="true">
-	<div id="barradebotoes" align="right"></div>
-	<selecaobox>
-		<sylistbox id="listaSelecao">
-			<auxhead class="cabecalhoPesquisa">
-				<auxheader>
-					<label value="Nome:" />
-					<textboxarg id="nomeArg"></textboxarg>
-				</auxheader>
-			</auxhead>
-			<listhead id="cabecalho">
-				<listheadersort label="Nome logradouro" value="nome" />
-			</listhead>
+<window id="logradouro" apply="br.gov.prodemge.prodigio.cursoprodigio.controle.cidade.LogradouroCtr" sizable="true">
+	
+		<div id="barradebotoes"/>
+	
+		<selecaobox>
 
-			<listitem height="25px">
-				<listcellbind label="nome" />
-			</listitem>
-		</sylistbox>
-	</selecaobox>
+			<sylistbox id="listaSelecao" >
+				<auxhead class="cabecalhoPesquisa" >
+					<auxheader colspan="4">
+						<label value="Nome:" />
+						<!-- textboxarg id="nomeArg"></textboxarg -->
+						<textboxbind nomeDoObjeto="classecontrole.objetoAtualArg.nome" width="400px"/>
+						<label value="CEP:" />
+						<cepboxbind nomeDoObjeto="classecontrole.objetoAtualArg.cep" width="150px" />
+						<label value="Nome Bairro:" />
+						<bandboxbind nomeDoObjeto="classecontrole.objetoAtualArg.bairro" />
+					</auxheader>
+				</auxhead>
+				
+				<!-- listhead utilizado para fazer o carregamento das propriedades necessárias para o preenchimento do resultado -->
+				<listhead id="cabecalho">
+					<listheadersort  label="Nome" value="nome" />
+					<listheadersort  label="CEP" value="cep" />
+					<listheadersort  label="Bairro" value="bairro.nome" />
+					<listheadersort  label="Cidade" value="bairro.cidade.nome" />
+				</listhead>
+				
+				<!-- listitem utilizado para exibição dos campos carregados no listhead  -->
+				<listitem height="25px">
+					<listcellbind label="nome" />
+					<listcellbind label="cep" />
+					<listcellbind label="bairro.nome" />
+					<listcellbind label="bairro.cidade.nome" />
+				</listitem>
+				
+			</sylistbox>
 
-	<manutencaobox>
-		<tablelayout>
-			<tablechildren>
-				<vbox>
-					<label value="Nome" />
-					<textboxbind nomeDoObjeto="classecontrole.objetoAtual.nome" width="300px"/>
-					<label value="Cep" />
-					<cepboxbind nomeDoObjeto="classecontrole.objetoAtual.cep" width="300px"/>
-					<label value="Bairro" />
-					<bandboxbind nomeDoObjeto="classecontrole.objetoAtual.bairro" width="300px"/>
- 				</vbox>
-			</tablechildren>
-		</tablelayout>
-	</manutencaobox>
-
+		</selecaobox>
+		
+		<manutencaobox >
+			<tablelayout >
+				<tablechildren>
+				  <vbox>
+					<label value="Nome do Logradouro:" />
+					<!-- textboxbind nomeDoObjeto="classecontrole.objetoAtual.nome" width="300px"/ -->
+					<textboxbind id="nome"/>
+					<label value="CEP:" />
+					<cepboxbind nomeDoObjeto="classecontrole.objetoAtual.cep" width="150px"/>
+					<label value="Bairro:" />
+					<bandboxbind nomeDoObjeto="classecontrole.objetoAtual.bairro" width="300px" />
+				  </vbox>
+				</tablechildren>
+			</tablelayout>
+		</manutencaobox>
+		
 </window>

@@ -1,37 +1,48 @@
-<window id="compromisso" 
-apply="br.gov.prodemge.prodigio.cursoprodigio.controle.compromisso.CompromissoCtr" sizable="true" title="Compromisso" border="normal" closable="true">
-	<div id="barradebotoes" align="right"> </div>
-	<selecaobox>
-		<sylistbox id="listaSelecao">
-			<auxhead class="cabecalhoPesquisa">
-				<auxheader>
-					<label value="Descrição:" />
-					<textboxarg id="descricaoArg"></textboxarg>
-				</auxheader>
-			</auxhead>
-			<listhead id="cabecalho">
-				<listheadersort label="Descrição" value="descricao" />
-			</listhead>
-			
-			<listitem height="25px">
-				<listcellbind label="descricao" />
-			</listitem>
-		</sylistbox>
-	</selecaobox>
+<window id="compromisso" height="100%" apply="br.gov.prodemge.prodigio.cursoprodigio.controle.compromisso.CompromissoCtr" sizable="true"  title="Compromisso" border="normal" closable="true">
+	
+		<div id="barradebotoes"/>
+	
+		<selecaobox>
 
-	<manutencaobox>
-		<tablelayout>
-			<tablechildren>
-				<vbox>
-					<label value="Descrição:" />
-					<textboxbind nomeDoObjeto="classecontrole.objetoAtual.descricao" width="300px"/>
-					<label value="Data Início" />
-					<dateboxbind nomeDoObjeto="classecontrole.objetoAtual.dataInicio" width="300px"/>
-					<label value="Data Fim" />
-					<dateboxbind nomeDoObjeto="classecontrole.objetoAtual.dataFim" width="300px"/>
- 				</vbox>
-			</tablechildren>
-		</tablelayout>
-	</manutencaobox>
+			<sylistbox id="listaSelecao" >
+				<auxhead class="cabecalhoPesquisa" >
+					<auxheader>
+						<label value="Descrição:" />
+						<textboxarg id="descricaoArg" ></textboxarg>
+					</auxheader>
+				</auxhead>
+				
+				<!-- listhead utilizado para fazer o carregamento das propriedades necessárias para o preenchimento do resultado -->
+				<listhead id="cabecalho">
+					<listheadersort  label="Descrição" value="descricao" />
+					<listheadersort  label="Data Inicio" value="dataInicio" />
+					<listheadersort  label="Data Fim" value="dataFim"/>
+				</listhead>
+				
+				<!-- listitem utilizado para exibição dos campos carregados no listhead  -->
+				<listitem height="25px">
+					<listcellbind label="descricao" />
+					<listcellbind label="dataInicio" />
+					<listcellbind label="dataFim" />
+				</listitem>
+				
+			</sylistbox>
 
+		</selecaobox>
+		
+		<manutencaobox >
+			<tablelayout >
+				<tablechildren>
+				  <vbox>
+					<label value="Descrição:" />
+					<textboxbind id="descricao" upper="false"/>
+					<label value="Data Inicio:" />
+					<dateboxbind nomeDoObjeto="classecontrole.objetoAtual.dataInicio"/>
+					<label value="Data Fim:" />
+					<dateboxbind nomeDoObjeto="classecontrole.objetoAtual.dataFim"/>
+				  </vbox>
+				</tablechildren>
+			</tablelayout>
+		</manutencaobox>
+		
 </window>
