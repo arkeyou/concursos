@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import br.gov.prodemge.prodigio.cursoprodigio.entidades.CursoProdigioBaseVO;
 import br.gov.prodigio.comuns.anotacoes.Lookup;
@@ -52,6 +53,17 @@ public class PaisVO extends CursoProdigioBaseVO {
 	}
 	public void setEstados(Set<EstadoSimpleVO> estados) {
 		this.estados = estados;
+	}
+	
+	@Transient
+	public String getListaEstados() {
+		
+		String nomes = "";
+		for (EstadoSimpleVO estadoSimpleVO : estados) {
+			nomes += estadoSimpleVO.getNome() + ", ";
+		}
+		
+		return nomes;
 	}
 	
 	@Override
