@@ -1,0 +1,106 @@
+.btn {
+	padding: 6px 50px;
+	margin-left: 4px;
+	height: 35px;
+	margin-bottom: 20px;
+}
+
+.z-bandbox-input {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #555;
+	vertical-align: middle;
+	background-color: #fff;
+	border: 1px 2px solid #ccc;
+	border-radius: 4px 0px 0px 4px;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.z-bandbox-button {
+	position: relative;
+	white-space: nowrap;
+	position: relative;
+	white-space: nowrap;
+	width: 1%;
+	white-space: nowrap;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.pagination {
+	margin: 0;
+}
+
+.z-notification-info .z-notification-content {
+	width: 400px;
+	font-size: 18px;
+	vertical-align: middle;
+}
+
+.z-datebox-input {
+	height: 34px;
+	border-radius: 4px 0px 0px 4px;
+}
+
+.z-datebox-input:focus {
+	box-shadow: 0 0 5px rgb(102,175,233);
+}
+
+
+.z-datebox-button {
+	height: 34px;
+}
+
+.z-window-header {
+	background-color: #e6e6e6;
+}
+
+.z-window-embedded {
+	border-radius: 4px
+}
+
+.navbar-default {
+	background-color: #e6e6e6;
+}
+
+.z-window {
+	background-color: #e6e6e6;
+}
+
+<!--
+.z-listfooter-content {
+	height: 40px;
+}
+
+-->
+.navbar {
+	border-radius: 0px 0px 25px 25px;
+	border: 1px solid #9C9C9C;
+}
+
+.z-group-inner .z-group-content, .z-group-inner .z-cell {
+    padding: 3px 5px;
+    text-align: right;
+}
+
+.z-group-content .z-label, .z-groupfoot-content .z-label {
+    font-weight: bold;
+    position: absolute;
+    left: 1%;
+}
+
+.z-group-inner {
+    border-top: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+    border-left: 1px solid #cfcfcf;
+    border-right: 1px solid #cfcfcf;
+    background: none;
+}
+
+.z-notification-pointer ~ .z-notification-content {
+    width: 100%;
+}

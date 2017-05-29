@@ -1,0 +1,11 @@
+<zk xmlns:w="http://www.zkoss.org/2005/zk/client" xmlns:h="http://www.w3.org/1999/xhtml">
+	<?page title="Prodígio 8"?>
+	<style src="br/gov/prodemge/sistema/tutorial/tutorial/css/estilo.css"></style>
+
+
+	<window id="index" apply="br.gov.prodigio.controle.WindowPrincipalUnsecured" onCreate="classecontrole.configuraUsuarioUnidadeLogada()">
+		<include id="include_introducao" src="introducao.zul" />
+
+	</window>
+
+</zk>

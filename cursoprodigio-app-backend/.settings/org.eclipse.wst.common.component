@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="cursoprodigio-app-backend-0.0.1-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/ear-resources"/>
+        <wb-resource deploy-path="/" source-path="/target/classes" tag="defaultRootSource"/>
+        <dependent-module archiveName="cursoprodigio-backend-0.0.1-SNAPSHOT.jar" deploy-path="/" handle="module:/resource/cursoprodigio-backend/cursoprodigio-backend">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="prodigio-negocio-8.0.022-ALPHA.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/mg/gov/prodemge/prodigio/prodigio-negocio/8.0.022-ALPHA/prodigio-negocio-8.0.022-ALPHA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="prodigio-negocio-interface-8.0.022-ALPHA.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/mg/gov/prodemge/prodigio/prodigio-negocio-interface/8.0.022-ALPHA/prodigio-negocio-interface-8.0.022-ALPHA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="prodigio-dominio-8.0.022-ALPHA.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/mg/gov/prodemge/prodigio/prodigio-dominio/8.0.022-ALPHA/prodigio-dominio-8.0.022-ALPHA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ssc-interfaces-1.2.20.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/gov/prodemge/ssc/ssc-interfaces/1.2.20/ssc-interfaces-1.2.20.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils-1.8.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="prodigio-comum-8.0.022-ALPHA.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/mg/gov/prodemge/prodigio/prodigio-comum/8.0.022-ALPHA/prodigio-comum-8.0.022-ALPHA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-api-1.7.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.7.2/slf4j-api-1.7.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-configuration-1.9.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-configuration/commons-configuration/1.9/commons-configuration-1.9.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-lang-2.6.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-lang/commons-lang/2.6/commons-lang-2.6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.1.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="prodigio-infraestrutura-8.0.022-ALPHA.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/mg/gov/prodemge/prodigio/prodigio-infraestrutura/8.0.022-ALPHA/prodigio-infraestrutura-8.0.022-ALPHA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="entirex-1.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/entirex/entirex/1.0/entirex-1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="xstream-1.4.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/thoughtworks/xstream/xstream/1.4.2/xstream-1.4.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="xmlpull-1.1.3.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="xpp3_min-1.1.4c.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="itext-2.1.7.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/com/lowagie/itext/2.1.7/itext-2.1.7.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="flexjson-3.3.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/net/sf/flexjson/flexjson/3.3/flexjson-3.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="prodemge-bpms-caixa-tarefas-3.0.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/mg/gov/prodemge/bpms/prodemge-bpms-caixa-tarefas/3.0.2/prodemge-bpms-caixa-tarefas-3.0.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="prodemge-bpms-caixa-tarefas-ibm-3.0.2.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/br/mg/gov/prodemge/bpms/prodemge-bpms-caixa-tarefas-ibm/3.0.2/prodemge-bpms-caixa-tarefas-ibm-3.0.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gson-2.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/gson/gson/2.1/gson-2.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="json-1.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/json/1.0/json-1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-lang3-3.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="restlet-1.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/restlet/1.0/restlet-1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="json-ext-1.0.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/restlet/ext/json-ext/1.0/json-ext-1.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-collections-3.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/commons-collections/commons-collections/3.1/commons-collections-3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mail-1.4.4.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/mail/mail/1.4.4/mail-1.4.4.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="activation-1.1.1.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/activation/activation/1.1.1/activation-1.1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hibernate-envers-4.1.3.Final.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/hibernate/envers/hibernate-envers/4.1.3.Final/hibernate-envers-4.1.3.Final.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cursoprodigio-domain-0.0.1-SNAPSHOT.jar" deploy-path="/lib" handle="module:/resource/cursoprodigio-domain/cursoprodigio-domain">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

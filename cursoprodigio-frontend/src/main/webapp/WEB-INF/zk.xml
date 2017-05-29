@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+	<!-- <listener> -->
+	<!-- <listener-class>br.gov.prodigio.controle.ProWebAppInit</listener-class> -->
+	<!-- </listener> -->
+	<!-- <listener> -->
+	<!-- <listener-class>br.gov.prodemge.sigg.institucional.controle.seguranca.InstitucionalSecurityRequestInterceptor</listener-class> -->
+	<!-- </listener> -->
+	<!-- <listener> -->
+	<!-- <listener-class>br.gov.prodemge.sigg.institucional.controle.seguranca.InstitucionalSecurityEventInterceptor</listener-class> -->
+	<!-- </listener> -->
+	<device-config>
+		<device-type>ajax</device-type>
+		<timeout-uri>/index.zul</timeout-uri>
+		<!-- An empty URL can cause the browser to reload the same URL -->
+	</device-config>
+	<system-config>
+		<response-charset>UTF-8</response-charset>
+		<upload-charset>ISO-8859-1</upload-charset>
+		<disable-event-thread>false</disable-event-thread>
+		<max-upload-size>81920</max-upload-size>
+		<disable-event-thread>false</disable-event-thread>
+	</system-config>
+	<language-config>
+		<addon-uri>/WEB-INF/lang-addon.xml</addon-uri>
+	</language-config>
+
+	<!-- Configuração necessária para não reaproveitar uuID's de elementos removidos da Árvore DOM. Esse reaproveitamento (reciclagem) gera bugs quando trabalhamos com os uuID's. -->
+	<library-property>
+		<name>org.zkoss.zk.ui.uuidRecycle.disabled</name>
+		<value>true</value>
+	</library-property>
+	
+	<library-property>
+		<name>org.zkoss.zul.Button.mold</name>
+		<value>trendy</value>
+	</library-property>
+
+	<library-property>
+		<name>org.zkoss.zul.Button.mold</name>
+		<value>bs</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.Menupopup.mold</name>
+		<value>bs</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zkmax.zul.Navbar.mold</name>
+		<value>bs</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.Paging.mold</name>
+		<value>bs</value>
+	</library-property>
+	<library-property>
+		<name>org.zkoss.zul.Panel.mold</name>
+		<value>bs</value>
+	</library-property>
+
+	<!-- <library-property> <name>org.zkoss.theme.preferred</name> <value>mei</value> </library-property> -->
+</zk>

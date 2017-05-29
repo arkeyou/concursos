@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="cursoprodigio-ds" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<non-jta-data-source>java:/cursoprodigio-ds</non-jta-data-source>
+		<!--ENTIDADES PRODIGIO-->
+		<class>br.gov.prodigio.entidades.ProBaseVO</class>
+		<class>br.gov.prodigio.entidades.ProVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.funcionario.FuncionarioVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.compromisso.CompromissoVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.cidade.BairroVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.cidade.CidadeVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.cidade.EstadoSimpleVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.cidade.LogradouroVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.cidade.PaisVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.curso.CursoVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.funcionario.DadosBasicosVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.funcionario.FuncionarioAnexoVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.funcionario.FuncionarioCursoVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.funcionario.FuncionarioDependenteVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.funcionario.FuncionarioEnderecoVO</class>
+		<class>br.gov.prodemge.prodigio.cursoprodigio.entidades.CursoProdigioBaseVO</class>			
+		<properties>
+			<property name="jboss.entity.manager.jndi.name" value="java:/em" />
+			<property name="jboss.entity.manager.factory.jndi.name" value="java:/emf/cursoprodigio" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="show_sql" value="false" />
+			<property name="hibernate.format_sql" value="false" />
+		</properties>		
+	</persistence-unit>
+</persistence> 

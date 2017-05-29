@@ -1,0 +1,35 @@
+<window id="bairro" apply="br.gov.prodemge.prodigio.cursoprodigio.controle.cidade.BairroCtr"
+	sizable="true" title="Bairro" border="normal" closable="true">
+	<div id="barradebotoes" align="right"></div>
+	<selecaobox>
+		<sylistbox id="listaSelecao">
+			<auxhead class="cabecalhoPesquisa">
+				<auxheader>
+					<label value="Nome:" />
+					<textboxarg id="nomeArg"></textboxarg>
+				</auxheader>
+			</auxhead>
+			<listhead id="cabecalho">
+				<listheadersort label="Nome da cidade" value="nome" />
+			</listhead>
+
+			<listitem height="25px">
+				<listcellbind label="nome" />
+			</listitem>
+		</sylistbox>
+	</selecaobox>
+
+	<manutencaobox>
+		<tablelayout>
+			<tablechildren>
+				<vbox>
+					<label value="Nome" />
+					<textboxbind nomeDoObjeto="classecontrole.objetoAtual.nome" width="300px"/>
+					<label value="Cidade" />
+					<bandboxbind nomeDoObjeto="classecontrole.objetoAtual.cidade" width="300px"/>
+ 				</vbox>
+			</tablechildren>
+		</tablelayout>
+	</manutencaobox>
+
+</window>

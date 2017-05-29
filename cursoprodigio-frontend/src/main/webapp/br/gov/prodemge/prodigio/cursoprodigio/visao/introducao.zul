@@ -1,0 +1,37 @@
+ <zk xmlns:w="http://www.zkoss.org/2005/zk/client" xmlns:h="http://www.w3.org/1999/xhtml">
+	<window id="principal" apply="br.gov.prodigio.controle.WindowIntroducao">	
+	<div class="row">
+			<div class="col-sm-12">
+				<navbar id="menubar_principal" orient="horizontal">
+					<nav label="Menu" visible="true" >
+						<navitem label="Funcionário" onClick="classecontrole.abrir(self)"> 
+							<custom-attributes urlcasodeuso="funcionario/funcionario.zul"/>
+						</navitem>
+						<navitem label="Compromisso" onClick="classecontrole.abrir(self)"> 
+							<custom-attributes urlcasodeuso="compromisso/compromisso.zul"/>
+						</navitem>
+						<navitem label="Curso" onClick="classecontrole.abrir(self)"> 
+							<custom-attributes urlcasodeuso="curso/curso.zul"/>
+						</navitem>
+						<navitem label="Pais" onClick="classecontrole.abrir(self)"> 
+							<custom-attributes urlcasodeuso="cidade/pais.zul"/>
+						</navitem>
+						<navitem label="Bairro" onClick="classecontrole.abrir(self)"> 
+							<custom-attributes urlcasodeuso="cidade/bairro.zul"/>
+						</navitem>
+						<navitem label="Logradouro" onClick="classecontrole.abrir(self)"> 
+							<custom-attributes urlcasodeuso="cidade/logradouro.zul"/>
+						</navitem>
+					</nav>					
+				</navbar>
+			</div>
+		</div>
+	<div class="conteudo" height="100%">
+		<div id="meio">
+			<div height="600px">
+			</div>
+		</div>
+	</div>
+
+	</window>
+</zk>
